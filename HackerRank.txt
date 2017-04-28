@@ -1,0 +1,100 @@
+
+		String[] bannedPrefixes = {"11", "3434", "67453", "6"};	
+		 String[] cardsToValidate ={"6724843711060148", "4536457567", "768769789"};
+		 
+		 List<Map<String, Object>> cardList = new ArrayList<>() ;
+		 
+		 int strLength = 0;
+		 int lastDigit = 0;
+		 String toBeVerified = "";
+	 
+		 int sumUp = 0;
+		 int doubleUp;
+		 
+		 String prefix = "";
+		 boolean isCardAllowed = true;
+		 boolean isValid = false;
+		 
+		 for(int c=0; c<cardsToValidate.length; c++){
+			 strLength = cardsToValidate[c].length();
+			 toBeVerified = cardsToValidate[c].substring(0, strLength-1);
+			 lastDigit= Integer.valueOf(cardsToValidate[c].substring(strLength-1, strLength));
+			 isCardAllowed = true;
+			 isValid = false;
+			 HashMap<String, Object> cardResult = new HashMap<String, Object>();
+			 for(int i=0; i< toBeVerified.length(); i++){
+			 doubleUp = Integer.valueOf(toBeVerified.substring(i, i+1)) * 2;
+			 sumUp = sumUp + doubleUp;
+			 }
+			 
+			 if( sumUp % 10 == lastDigit){	
+					isValid = true;
+				 }
+				 
+				for (int j=0; j<bannedPrefixes.length; j++){
+					
+				
+				prefix = toBeVerified.substring(0, bannedPrefixes[j].length());
+					if(bannedPrefixes[j].equals(prefix)){
+						 isCardAllowed = false;
+				 }
+				}
+				cardResult.put("card", cardsToValidate[c].toString()) ;
+				cardResult.put("isValid", isValid);
+				cardResult.put("isAllowed", isCardAllowed);
+				cardList.add(c, cardResult);
+		}
+		//return cardList;
+	/*	 Map<String, Object> lMap = new HashMap<>();
+		  for(int z=0; z< cardList.size(); z++){
+			 lMap =  cardList.get(z);
+			 System.out.println(lMap.get("card"));
+			 System.out.println(lMap.get("isValid"));
+			 System.out.println(lMap.get("isAllowed"));
+			// lMap.get("card");
+		  }*/
+		 }
+		 
+//	}
+}
+	}
+	
+	===============================================================================================================
+	
+	List<Map<String, Object>> coupons = new ArrayList<>() ; 
+        List<String> preferredCategories = new ArrayList<>(); //  baby, Gift Cards, Sporting Goods
+        
+       // Map<String, Object> couponMap = new HashMap<>();
+        List<Map<String, Object>> couponsList = new ArrayList<>() ; 
+        boolean notaPreferredCat = true;
+        
+        //checking for preferredcategory
+        for(int k=0; k<preferredCategories.size(); k++){
+	       for(int j=0; j<coupons.size(); j++){
+	        	if (!coupons.get(j).containsKey(preferredCategories.get(k))){
+	        		notaPreferredCat = false;	
+	        	}
+	        	  if(notaPreferredCat == false){
+	  	        	coupons.remove(j);
+	  	        }
+	        } 
+	     
+        }
+       
+        	Collections.sort(coupons, new Comparator<Map<String, Object>> () {
+
+				@Override
+				public int compare(Map<String, Object> m1, Map<String, Object> m2) {
+			        return ((String) m2.get("couponAmount")).compareTo((String) m1.get("couponAmount")); //descending
+			    }
+
+        	});
+     
+        	 for(int i=0; i<10; i++){
+        		 coupons.get(i).remove("code");
+             	couponsList.get(i).putAll(coupons.get(i));
+        	 }
+        	// return couponsList;
+	}     
+		
+}
