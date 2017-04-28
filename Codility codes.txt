@@ -1,0 +1,120 @@
+/*int N = 1041;
+		String binNum = Integer.toBinaryString(N);
+		int binLength = binNum.length();
+		CharSequence singleBin;
+		int zeroCount=0;
+		 for (int i = 0; i<=binLength-1; i++){
+			  singleBin = binNum.subSequence(i, i+1); //charAt(i);
+			// System.out.println(singleBin);
+			 
+			 if (i!=0){
+			  if (singleBin.equals("0")){
+				zeroCount+=zeroCount=1;
+			} else { break;
+			}
+			}
+			  }
+		
+		 System.out.println(zeroCount);*/
+		
+		/*int[] array = {1,2,3,4,5};
+		int numOfRotation = 3;
+		if (array == null) {
+	        throw new NullPointerException("array must not be null");
+	    }
+	    if(array.length <= 1){
+	       // return array;
+	    }
+	    int[] shiftedArray = new int[array.length];
+	   
+	   for (int j=1; j<=numOfRotation; j++){
+		 int lastElement = array[array.length - 1];
+	    for (int i = array.length - 1; i > 0; i--) {
+	        shiftedArray[i] = array[i - 1];
+	    }
+	    shiftedArray[0] = lastElement;
+	    array = shiftedArray;
+	   }*/
+	  //  System.out.println(shiftedArray);
+	  
+	   // return shiftedArray;
+	   
+	   int X = 3;//3, 999111321, 7) 
+		int Y = 999111321;
+		int D = 7;
+		int Z = Y / D;
+		
+		int newPos = X;
+	    int numOfJumps = 0;
+	   
+		for (int i=0; i<= Z; i++){
+			newPos = newPos+D;
+			numOfJumps = i+1;
+			if (newPos >= Y){
+				break;
+			}
+			
+		}
+		System.out.println(numOfJumps);
+		
+		int[] A = {3, 3, 3, 4, 5};
+		
+		int aLength = A.length;
+		int[] S = new int[aLength];
+		int Z=0;
+		int D;
+		for(int i=0; i< aLength;i++){
+			if (i==0 || i % 2 == 0) {
+				S[i] = -1;
+				D = S[i] * A[i];
+			} else {
+				S[i] = 1;
+				D = S[i] * A[i];
+		   }
+			Z+=D;//val(A[i], S[i]);
+			
+		}
+		if(Z<0){
+			Z=Z*-1;
+		}
+		System.out.println(Z);
+	   
+	   int[] A = {1,3,6,4,1,2, 5, 7, 5};
+		int N = A.length;
+		int minVal = 0;
+		 Arrays.sort(A);
+		 
+		 for(int i=0; i<A.length-1;i++){
+			//minVal = A[0];
+			
+			if(A[i+1] != A[i]+1 && A[i+1] != A[i] ){
+				 minVal=A[i]+1;
+			 }
+		 }
+		
+		 System.out.println(minVal);
+		 
+		 
+		 StringBuffer strWithNumber = new StringBuffer();
+		char[] strToCharArray = alphaStr.toCharArray();
+		int numEquivalent = 0;
+
+		for (char chr : strToCharArray) {
+			int charNum = (int) chr;
+			int ascii_integer = 0;
+
+			if (charNum <= 122 & charNum >= 97) { // for lower case alphabets
+				ascii_integer = 96;
+				numEquivalent = charNum - ascii_integer;
+			} else if (charNum <= 90 & charNum >= 65) { // for upper case
+														// alphabets
+				ascii_integer = 64;
+				numEquivalent = charNum - ascii_integer;
+				numEquivalent = numEquivalent * 2;
+			} else {
+				return -1;
+			}
+			strWithNumber.append(numEquivalent);
+		}
+		return Integer.parseInt(strWithNumber.toString());
+	}
