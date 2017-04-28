@@ -1,0 +1,194 @@
+String NValue =  Integer.toString(N);
+		int Nlength = NValue.length();
+		Integer[] Narray = new Integer[Nlength];
+		List<Integer> NList = new ArrayList<>();
+		
+		
+		for (int i = 0; i<Nlength; i++) {
+			//Narray[i] = Integer.parseInt(NValue.substring(i, i+1));
+			NList.add(Integer.parseInt(NValue.substring(i, i+1)));
+		}
+		
+		Collections.sort(NList, Collections.reverseOrder());
+		//Collections.reverse(Integer.asList(Narray));
+		
+		StringBuffer newValue = new StringBuffer();
+
+		for (int i = 0; i<Nlength; i++) {
+			newValue.append(NList.get(i));
+		}
+
+		// return Integer.parseInt(newValue.toString());
+		
+		
+		
+	int[] A = {1,4,-1,3,2};
+		int Alength = A.length;
+		LinkedList lList = new LinkedList();
+		Map<Integer, Integer> myMap = new HashMap<Integer, Integer>();
+		
+		for (int i =0; i<Alength; i++){
+			myMap.put(i, A[i]);
+		}
+		
+		for (int j =0; j<Alength; j++){
+			int KeyValue = myMap.get(j);
+			if(j==0){
+				lList.add(myMap.get(j));
+			} /*else if (KeyValue==-1){
+				break;
+		}*/ else {
+			myMap.get(KeyValue);
+			lList.add(myMap.get(KeyValue));
+		}
+			}
+		lList.remove(null);
+		
+		System.out.println(lList.size());
+
+
+ int[] H = { 1, 2 };
+
+		int count = 0; 
+		//LinkedList<Integer> lList = new LinkedList<Integer>();
+		ArrayList<Integer> left = new ArrayList<>();
+		ArrayList<Integer> right = new ArrayList<>();
+		/*for (int i=0; i< H.length; i++){
+			lList.add(H[i]);
+		}*/
+		//Collections.sort(lList);
+		count =count+H.length;
+		int mid = count/2;
+		
+		 
+		for(int i=0; i<H.length;i++){
+			if(i<mid){
+				left.add(H[i]);
+				
+			} else if (i>mid){
+				right.add(H[i]);
+			}
+		}
+		if (left.size()==0 && right.size()!=0){
+			if(H[mid]<right.get(0)){
+				count=count+1;
+			}
+		}
+		if (left.size()!=0 && right.size()==0){
+			if(H[mid]<left.get(0)){
+				count=count+1;
+			}
+		}
+		
+		for(int z=0; z<H.length;z++){
+		for(int j=0;j<left.size();j++){
+			for(int k=0;k<right.size();k++){
+			if(left.get(j)<right.get(k)){
+				count=count+1;
+			}
+		}
+		}
+		
+		for(int l=0;l<left.size();l++){
+			for(int m=0;m<right.size();m++){
+			if(right.get(l)<left.get(m)){
+				count=count+1;
+			}
+		}
+		}
+		
+		}
+		
+		
+		System.out.println(count);	
+		
+		=========================
+		
+		
+			List<Integer> intList = new ArrayList<>();
+		int maxHr = 24;
+		int maxMin = 60;
+		boolean hrless = false;
+		StringBuffer str = new StringBuffer();
+		StringBuffer str1 = new StringBuffer();
+		intList.add(A);
+		intList.add(B);
+		intList.add(C);
+		intList.add(D);
+		Collections.sort(intList);
+		
+		// Hr calc
+		for(int i=0; i<4; i++){	
+			if (intList.contains(2)){	
+					if(intList.get(i).equals(2)){
+						str.append(intList.get(i));
+						intList.remove(i);
+						break;
+					
+					}
+					} else if (intList.contains(1)){
+					if(intList.get(i).equals(1)){
+						str.append(intList.get(i));
+						intList.remove(i);
+						break;
+				}
+					} else {
+						Collections.sort(intList, Collections.reverseOrder());
+						if (intList.get(i) <=9){
+							str.append("0"+intList.get(i));
+							intList.remove(i);
+							hrless =true;
+							break;
+						}
+					}
+		}
+		Collections.sort(intList, Collections.reverseOrder());
+		for (int j=0;j<3;j++){
+			if(intList.get(j) <= 3 && !hrless){
+				str.append(intList.get(j));
+				intList.remove(j);
+				break;
+			}
+		}
+		str.append(":");
+		//min calc
+		
+		for (int k=0;k<2;k++){
+			if(intList.get(k) <= 6){
+				str.append(intList.get(k));
+				intList.remove(k);
+				break;
+			}
+		}
+		
+		if(intList.size()<=2 && intList.get(0) <=9){
+			str.append(intList.get(0));
+			str1.append(str);
+		} else{
+			str1.append("NOT POSSIBLE");
+		}
+		
+		public static int convertLettersToNumbers(String alphaStr) {
+		StringBuffer strWithNumber = new StringBuffer();
+		char[] strToCharArray = alphaStr.toCharArray();
+		int numEquivalent = 0;
+
+		for (char chr : strToCharArray) {
+			int charNum = (int) chr;
+			int ascii_integer = 0;
+
+			if (charNum <= 122 & charNum >= 97) { // for lower case alphabets
+				ascii_integer = 96;
+				numEquivalent = charNum - ascii_integer;
+			} else if (charNum <= 90 & charNum >= 65) { // for upper case
+														// alphabets
+				ascii_integer = 64;
+				numEquivalent = charNum - ascii_integer;
+				numEquivalent = numEquivalent * 2;
+			} else {
+				return -1;
+			}
+			strWithNumber.append(numEquivalent);
+		}
+		return Integer.parseInt(strWithNumber.toString());
+	}
